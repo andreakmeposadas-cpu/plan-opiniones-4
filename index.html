@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizarra Digital - Colegio Montano - Opiniones Personales</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Configuración del tema con la paleta de colores institucional del Colegio Montano -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montanoAzul: '#1269A8',
+                        montanoAmarillo: '#F7D615',
+                        montanoVerdeGris: '#54887D',
+                        montanoAzulClaro: '#88B5C7',
+                        montanoVerdeOliva: '#A6B046',
+                        montanoFondo: '#F2F5E9',
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Tahoma', 'Verdana', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F2F5E9;
+            color: #1a202c;
+        }
+        .tab-btn.active {
+            background-color: #1269A8;
+            color: white;
+            border-bottom: 4px solid #F7D615;
+            font-weight: bold;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 600px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+    <!-- ENCABEZADO INSTITUCIONAL -->
+    <header class="bg-montanoAzul text-white shadow-md p-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo e Identidad Institucional -->
+            <div class="flex items-center space-x-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" 
+                     alt="Logo Colegio Montano" 
+                     class="h-12 w-auto bg-white p-1 rounded-md shadow"
+                     onerror="this.src='https://placehold.co/120x50/1269A8/FFFFFF?text=MONTANO'">
+                <div>
+                    <h1 class="text-xl font-bold text-montanoAmarillo leading-tight">Colegio Montano</h1>
+                    <p class="text-xs text-gray-200">Pizarra Digital Interactiva - Plan Diario (Duración total: 50 minutos)</p>
+                </div>
+            </div>
+
+            <!-- Datos Informativos de la Clase -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs bg-white/10 p-2 rounded-lg border border-white/20">
+                <div><span class="font-semibold text-montanoAmarillo">Curso:</span> Comun. y Lenguaje</div>
+                <div><span class="font-semibold text-montanoAmarillo">Grado:</span> 4to Primaria</div>
+                <div><span class="font-semibold text-montanoAmarillo">Tema:</span> Opiniones Personales</div>
+                <div><span class="font-semibold text-montanoAmarillo">Docente:</span> Andrea Aguilar</div>
+                <div><span class="font-semibold text-montanoAmarillo">Unidad:</span> 1</div>
+                <div><span class="font-semibold text-montanoAmarillo">Plan N°:</span> 2</div>
+                <div><span class="font-semibold text-montanoAmarillo">Fecha:</span> Enero 2027</div>
+                <div><span class="font-semibold text-montanoAmarillo">Modelo:</span> Hábitos Montano</div>
+            </div>
+
+            <!-- Botón para Pantalla Completa -->
+            <button onclick="toggleFullScreen()" class="bg-montanoAmarillo hover:bg-yellow-400 text-montanoAzul font-bold px-3 py-2 rounded-lg flex items-center gap-2 shadow transition text-sm">
+                <i class="fa-solid fa-expand"></i>
+                <span class="hidden sm:inline">Pantalla Completa</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MARCO PEDAGÓGICO INSTITUCIONAL (ENFOQUE, CNB Y HÁBITOS) -->
+    <section class="max-w-7xl mx-auto w-full p-4 my-2">
+        <div class="bg-white rounded-xl shadow-sm border-l-4 border-montanoVerdeGris p-4 grid md:grid-cols-3 gap-4 text-xs md:text-sm">
+            <div>
+                <h3 class="font-bold text-montanoAzul flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-montanoVerdeOliva"></i> Competencia CNB & Logro
+                </h3>
+                <p class="mt-1 text-gray-700"><strong>Competencia:</strong> Expresa oralmente sus ideas, sentimientos y opiniones con coherencia, claridad y respeto a los puntos de vista ajenos en diversas situaciones comunicativas (CNB 4to Primaria).</p>
+                <p class="mt-1 text-gray-700"><strong>Logro:</strong> Formula opiniones personales argumentadas utilizando conectores adecuados y diferencando un hecho de un juicio de valor.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-montanoAzul flex items-center gap-2">
+                    <i class="fa-solid fa-brain text-montanoVerdeOliva"></i> Competencias Clave & Hábitos
+                </h3>
+                <p class="mt-1 text-gray-700"><strong>Competencias Clave:</strong> Pensamiento crítico, argumentación lógica, tolerancia, comunicación asertiva y respeto interpersonal.</p>
+                <p class="mt-1 text-gray-700"><strong>Hábitos Montano:</strong> <span class="bg-montanoAmarillo/30 px-1 rounded font-semibold">Buscar primero entender, luego ser entendido</span> (escucha activa) y <span class="bg-montanoAmarillo/30 px-1 rounded font-semibold">Pensar Ganar-Ganar</span> (respeto a opiniones distintas).</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-montanoAzul flex items-center gap-2">
+                    <i class="fa-solid fa-box-archive text-montanoVerdeOliva"></i> Recursos & Momentos Eval.
+                </h3>
+                <p class="mt-1 text-gray-700"><strong>Recursos:</strong> Libro de texto, tarjeta de posturas, pizarra digital interactiva, cuadernos y marcadores de colores.</p>
+                <p class="mt-1 text-gray-700"><strong>Evaluación:</strong> Inicial (Clasificación Hecho vs. Opinión), Formativa (Guía de conectores y oraciones), Sumativa (Rúbrica de Foro de Debate y Trivia Interactiva).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVEGACIÓN DE PESTAÑAS (SECUENCIA DIDÁCTICA - 50 MINUTOS) -->
+    <main class="max-w-7xl mx-auto w-full flex-grow px-4 pb-8">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+            <!-- Barra de Pestañas -->
+            <div class="flex flex-wrap border-b border-gray-200 bg-gray-50 text-sm md:text-base">
+                <button onclick="switchTab('tab1')" id="btn-tab1" class="tab-btn active flex-1 py-3 px-4 text-center font-semibold text-gray-600 hover:text-montanoAzul flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-lightbulb text-montanoAmarillo"></i> I) Introducción Motivante (5 min)
+                </button>
+                <button onclick="switchTab('tab2')" id="btn-tab2" class="tab-btn flex-1 py-3 px-4 text-center font-semibold text-gray-600 hover:text-montanoAzul flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-user-pen text-montanoAzulClaro"></i> II) Trabajo Individual (15 min)
+                </button>
+                <button onclick="switchTab('tab3')" id="btn-tab3" class="tab-btn flex-1 py-3 px-4 text-center font-semibold text-gray-600 hover:text-montanoVerdeGris flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-people-group text-montanoVerdeGris"></i> III) Trabajo Cooperativo (18 min)
+                </button>
+                <button onclick="switchTab('tab4')" id="btn-tab4" class="tab-btn flex-1 py-3 px-4 text-center font-semibold text-gray-600 hover:text-montanoVerdeOliva flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-comments text-montanoVerdeOliva"></i> IV) Plenaria & Evaluación (12 min)
+                </button>
+            </div>
+
+            <!-- CONTENIDO DE LAS PESTAÑAS -->
+            <div class="p-6">
+
+                <!-- PESTAÑA I: INTRODUCCIÓN MOTIVANTE (5 MINUTOS) -->
+                <div id="tab1" class="tab-content block space-y-6">
+                    <div class="bg-yellow-50 border-l-4 border-montanoAmarillo p-4 rounded-r-md">
+                        <h2 class="text-lg font-bold text-montanoAzul flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-montanoAmarillo"></i> Dinámica: "¿Hecho u Opinión?" (5 min)
+                        </h2>
+                        <p class="text-sm text-gray-700 mt-1">
+                            Activación de conocimientos previos distinguiendo lo verídico de lo subjetivo.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 space-y-3">
+                            <h3 class="font-semibold text-montanoAzul flex items-center gap-2">
+                                <i class="fa-solid fa-scale-balanced text-montanoVerdeGris"></i> Comparación Rápida:
+                            </h3>
+                            <div class="p-3 bg-white rounded border border-gray-200 text-sm space-y-3">
+                                <div class="p-2 bg-blue-50 border-l-4 border-montanoAzul rounded">
+                                    <p class="font-bold text-montanoAzul text-xs uppercase">Caso A: El Hecho</p>
+                                    <p class="text-gray-800 italic">"Guatemala está ubicada en Centroamérica y su capital es la Ciudad de Guatemala."</p>
+                                    <span class="text-xs text-green-700 font-semibold mt-1 inline-block"><i class="fa-solid fa-check"></i> Comprobable y objetivo</span>
+                                </div>
+                                <div class="p-2 bg-yellow-50 border-l-4 border-montanoAmarillo rounded">
+                                    <p class="font-bold text-montanoAzul text-xs uppercase">Caso B: La Opinión</p>
+                                    <p class="text-gray-800 italic">"Guatemala es el país más hermoso de todo el continente para vivir."</p>
+                                    <span class="text-xs text-amber-700 font-semibold mt-1 inline-block"><i class="fa-solid fa-heart"></i> Subjetivo y depende del gusto personal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-montanoAzul/5 p-4 rounded-lg border border-montanoAzul/20 space-y-3">
+                            <h3 class="font-semibold text-montanoAzul flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-montanoAzulClaro"></i> Concepto Clave:
+                            </h3>
+                            <div class="p-4 bg-white rounded shadow-sm border-l-4 border-montanoAzul text-sm text-gray-700 space-y-2">
+                                <p class="font-bold text-montanoAzul">¿Qué es una Opinión Personal?</p>
+                                <p>Es la idea, juicio o postura que una persona tiene sobre un tema, objeto o situación. A diferencia de un hecho, una opinión <strong>no es verdadera ni falsa</strong>, pero debe estar fundamentada y expresarse de forma respetuosa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA II: TRABAJO INDIVIDUAL (15 MINUTOS) -->
+                <div id="tab2" class="tab-content hidden space-y-6">
+                    <div class="bg-blue-50 border-l-4 border-montanoAzulClaro p-4 rounded-r-md">
+                        <h2 class="text-lg font-bold text-montanoAzul flex items-center gap-2">
+                            <i class="fa-solid fa-book-open"></i> Guía Didáctica: Estructura de una Opinión y Conectores
+                        </h2>
+                        <p class="text-sm text-gray-700 mt-1">
+                            Aprende las frases claves para expresar tus puntos de vista de forma correcta en tu cuaderno.
+                        </p>
+                    </div>
+
+                    <!-- TARJETAS DE CONECTORES DE OPINIÓN -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs md:text-sm">
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm border-t-4 border-montanoAzul">
+                            <strong class="text-montanoAzul text-sm block mb-1"><i class="fa-solid fa-comment-dots"></i> Expresar Punto de Vista</strong>
+                            <p class="text-gray-600">"En mi opinión...", "Desde mi punto de vista...", "A mi parecer..."</p>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm border-t-4 border-montanoAmarillo">
+                            <strong class="text-montanoAzul text-sm block mb-1"><i class="fa-solid fa-brain"></i> Manifestar Creencia</strong>
+                            <p class="text-gray-600">"Considero que...", "Pienso que...", "Creo que..."</p>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm border-t-4 border-montanoVerdeGris">
+                            <strong class="text-montanoAzul text-sm block mb-1"><i class="fa-solid fa-lightbulb"></i> Dar una Razon / Porqué</strong>
+                            <p class="text-gray-600">"...porque...", "...debido a que...", "...ya que..."</p>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm border-t-4 border-montanoVerdeOliva">
+                            <strong class="text-montanoAzul text-sm block mb-1"><i class="fa-solid fa-handshake"></i> Mostrar Acuerdo/Desacuerdo</strong>
+                            <p class="text-gray-600">"Coincido en que...", "Respeto tu idea, sin embargo..."</p>
+                        </div>
+                    </div>
+
+                    <!-- Ejercicio Práctico Individual de Transformación -->
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm space-y-3">
+                        <h3 class="font-bold text-gray-800 text-sm md:text-base">Ejercicio de Transformación (En tu cuaderno)</h3>
+                        <p class="text-sm text-gray-600">Transforma los siguientes HECHOS en OPINIONES usando conectores adecuados:</p>
+
+                        <div class="space-y-2 text-sm">
+                            <div class="p-2 bg-gray-50 rounded border"><strong>1. Hecho:</strong> "Los estudiantes tienen un recreo de 20 minutos diariamente."</div>
+                            <div class="p-2 bg-gray-50 rounded border"><strong>2. Hecho:</strong> "El uso de teléfonos celulares está restringido durante la clase."</div>
+                            <div class="p-2 bg-gray-50 rounded border"><strong>3. Hecho:</strong> "En la biblioteca escolar hay libros de cuentos y enciclopedias."</div>
+                        </div>
+
+                        <!-- Botón Desplegable con Orientación/Solución -->
+                        <div class="pt-2">
+                            <button onclick="toggleAccordion('solucion-opiniones')" class="bg-montanoAzul text-white px-4 py-2 rounded-md text-xs font-semibold hover:bg-montanoVerdeGris transition flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> Desplegar Verificación / Ejemplos de Respuesta
+                            </button>
+                            <div id="solucion-opiniones" class="accordion-content mt-2 bg-green-50 border border-green-200 p-3 rounded-md text-sm text-gray-700 space-y-1">
+                                <p><strong>Ejemplos de Respuestas Correctas:</strong></p>
+                                <ul class="list-disc list-inside text-xs space-y-1 mt-1">
+                                    <li><strong>1. Opinión:</strong> <em>En mi opinión</em>, el recreo de 20 minutos es muy corto <em>porque</em> necesitamos más tiempo para convivir y descansar.</li>
+                                    <li><strong>2. Opinión:</strong> <em>Considero que</em> restringir los celulares es acertado <em>ya que</em> nos permite concentrarnos mejor en las actividades.</li>
+                                    <li><strong>3. Opinión:</strong> <em>Desde mi punto de vista</em>, la biblioteca escolar es el lugar más agradable del colegio <em>debido a que</em> tiene cuentos fascinantes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA III: TRABAJO COOPERATIVO (18 MINUTOS) -->
+                <div id="tab3" class="tab-content hidden space-y-6">
+                    <div class="bg-green-50 border-l-4 border-montanoVerdeGris p-4 rounded-r-md">
+                        <h2 class="text-lg font-bold text-montanoAzul flex items-center gap-2">
+                            <i class="fa-solid fa-users"></i> Taller en Equipos: "El Foro Escolar de Puntos de Vista" (18 min)
+                        </h2>
+                        <p class="text-sm text-gray-700 mt-1">
+                            Trabajo en equipos de 4 integrantes aplicando los hábitos Montano: <strong>Buscar primero entender, luego ser entendido</strong> y <strong>Pensar Ganar-Ganar</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Roles dentro del Equipo -->
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+                            <div class="w-8 h-8 mx-auto bg-montanoAzul/10 text-montanoAzul rounded-full flex items-center justify-center font-bold mb-1 text-sm">1</div>
+                            <h4 class="font-bold text-montanoAzul text-xs md:text-sm">Moderador/a</h4>
+                            <p class="text-xs text-gray-600 mt-1">Concede la palabra y asegura que se respeten los tiempos y los turnos.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+                            <div class="w-8 h-8 mx-auto bg-montanoAmarillo/30 text-montanoAzul rounded-full flex items-center justify-center font-bold mb-1 text-sm">2</div>
+                            <h4 class="font-bold text-montanoAzul text-xs md:text-sm">Secretario/a</h4>
+                            <p class="text-xs text-gray-600 mt-1">Apunta la opinión del grupo e identifica los conectores empleados.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+                            <div class="w-8 h-8 mx-auto bg-montanoVerdeGris/20 text-montanoVerdeGris rounded-full flex items-center justify-center font-bold mb-1 text-sm">3</div>
+                            <h4 class="font-bold text-montanoAzul text-xs md:text-sm">Argumentador/a</h4>
+                            <p class="text-xs text-gray-600 mt-1">Aporta los motivos o razones ("porque...") que respaldan la postura.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+                            <div class="w-8 h-8 mx-auto bg-montanoAzulClaro/30 text-montanoAzul rounded-full flex items-center justify-center font-bold mb-1 text-sm">4</div>
+                            <h4 class="font-bold text-montanoAzul text-xs md:text-sm">Vocero/a</h4>
+                            <p class="text-xs text-gray-600 mt-1">Presenta la postura del equipo en la plenaria con amabilidad y claridad.</p>
+                        </div>
+                    </div>
+
+                    <!-- Reto del Trabajo Cooperativo -->
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm space-y-3 text-sm">
+                        <h3 class="font-bold text-montanoAzul text-sm md:text-base flex items-center gap-2">
+                            <i class="fa-solid fa-bullhorn"></i> Tema a Debatir en Equipo:
+                        </h3>
+                        <div class="p-3 bg-montanoFondo rounded border-l-4 border-montanoAzul text-gray-800">
+                            <strong>Dilema Escolar:</strong> <em>"¿Deberían permitirse las tareas escolares durante los fines de semana?"</em>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>Escuchen la opinión individual de cada integrante en silencio (Hábito: <strong>Buscar primero entender</strong>).</li>
+                            <li>Lleguen a un consenso como equipo o acuerden una postura representativa (Hábito: <strong>Pensar Ganar-Ganar</strong>).</li>
+                            <li>Redacten en una ficha la postura oficial del grupo comenzando obligatoriamente con un conector de opinión (Ej: <em>"A nuestro parecer..."</em>) y al menos 2 razones de respaldo.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA IV: PLENARIA & EVALUACIÓN (12 MINUTOS) -->
+                <div id="tab4" class="tab-content hidden space-y-6">
+                    <div class="bg-purple-50 border-l-4 border-montanoVerdeOliva p-4 rounded-r-md">
+                        <h2 class="text-lg font-bold text-montanoAzul flex items-center gap-2">
+                            <i class="fa-solid fa-gamepad"></i> IV) Plenaria & Juego Interactivo (12 min)
+                        </h2>
+                        <p class="text-sm text-gray-700 mt-1">
+                            Exposición de voceros y desafío de clasificación de declaraciones en vivo.
+                        </p>
+                    </div>
+
+                    <!-- Juego Interactivo: Trivia de Opiniones vs Hechos -->
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="font-bold text-montanoAzul mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-montanoAmarillo"></i> Trivia Express: "Clasifica la Declaración"
+                        </h3>
+                        <div id="trivia-box" class="bg-montanoFondo p-4 rounded-lg text-center space-y-4">
+                            <p id="trivia-question" class="font-semibold text-gray-800 text-base">
+                                Cargando pregunta...
+                            </p>
+                            <div id="trivia-options" class="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-md mx-auto">
+                                <!-- Opciones cargadas por JS -->
+                            </div>
+                            <div id="trivia-feedback" class="font-bold text-sm h-6"></div>
+                        </div>
+                    </div>
+
+                    <!-- RÚBRICA INTERACTIVA DE EVALUACIÓN PARA LA PLENARIA -->
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm space-y-4">
+                        <div class="flex justify-between items-center flex-wrap gap-2">
+                            <h3 class="font-bold text-montanoAzul text-base flex items-center gap-2">
+                                <i class="fa-solid fa-clipboard-check text-montanoVerdeGris"></i> Rúbrica de Plenaria - Expresión de Opiniones
+                            </h3>
+                            <span class="text-xs bg-montanoAzul/10 text-montanoAzul px-2 py-1 rounded font-semibold">Evaluación Sumativa</span>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs md:text-sm border-collapse border border-gray-200">
+                                <thead>
+                                    <tr class="bg-montanoAzul text-white">
+                                        <th class="p-2 border">Criterio de Evaluación</th>
+                                        <th class="p-2 border text-center w-28">Excelente (3 pts)</th>
+                                        <th class="p-2 border text-center w-28">Satisfactorio (2 pts)</th>
+                                        <th class="p-2 border text-center w-28">En Proceso (1 pt)</th>
+                                        <th class="p-2 border text-center w-20">Punteo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2 border font-medium">1. Uso de Conectores de Opinión</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Aplica de forma explícita y precisa conectores como "En mi opinión", "Considero que", etc.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Expresa su opinión pero olvida o usa con imprecisión el conector adecuado.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">No utiliza conectores de opinión al exponer la postura.</td>
+                                        <td class="p-2 border text-center font-bold text-montanoAzul">
+                                            <select onchange="updateScore()" class="rubric-score rounded border border-gray-300 p-1">
+                                                <option value="3">3</option>
+                                                <option value="2">2</option>
+                                                <option value="1">1</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border font-medium">2. Fundamentación y Razones</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Sostiene su opinión con al menos dos razones lógicas y fundamentadas.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Menciona solo una razón o el argumento es débil.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Da una opinión sin ofrecer ninguna razón de respaldo.</td>
+                                        <td class="p-2 border text-center font-bold text-montanoAzul">
+                                            <select onchange="updateScore()" class="rubric-score rounded border border-gray-300 p-1">
+                                                <option value="3">3</option>
+                                                <option value="2">2</option>
+                                                <option value="1">1</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border font-medium">3. Respeto y Escucha Activa</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Demuestra empatía, escucha en silencio a otros equipos y responde respetuosamente.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Mantiene el respeto pero muestra distracción durante las exposiciones ajenas.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Interrumpe o desacredita opiniones de forma desatenta.</td>
+                                        <td class="p-2 border text-center font-bold text-montanoAzul">
+                                            <select onchange="updateScore()" class="rubric-score rounded border border-gray-300 p-1">
+                                                <option value="3">3</option>
+                                                <option value="2">2</option>
+                                                <option value="1">1</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border font-medium">4. Claridad y Volumen Oral</td>
+                                        <td class="p-2 border text-gray-600 text-xs">El vocero expone con tono claro, volumen adecuado y fluidez verbal.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Volumen bajo o ligera inseguridad al comunicar la idea.</td>
+                                        <td class="p-2 border text-gray-600 text-xs">Muestra gran dificultad para transmitir la postura del grupo.</td>
+                                        <td class="p-2 border text-center font-bold text-montanoAzul">
+                                            <select onchange="updateScore()" class="rubric-score rounded border border-gray-300 p-1">
+                                                <option value="3">3</option>
+                                                <option value="2">2</option>
+                                                <option value="1">1</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Total Obtenido -->
+                        <div class="flex justify-between items-center pt-2 bg-gray-50 p-3 rounded-lg">
+                            <span class="font-bold text-gray-700">Punteo Total Obtenido:</span>
+                            <span id="total-score" class="text-xl font-extrabold text-montanoAzul">12 / 12 pts</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-montanoAzul text-white text-center py-3 text-xs mt-auto">
+        <p>Colegio Montano &copy; 2027 - Pizarra Digital Interactiva para el Aula Presencial</p>
+    </footer>
+
+    <!-- LÓGICA DE INTERACTIVIDAD JAVASCRIPT -->
+    <script>
+        // Cambiar entre Pestañas de la Secuencia Didáctica
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('block');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+
+        // Alternar Soluciones Desplegables
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('open');
+        }
+
+        // Función Pantalla Completa
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error al activar pantalla completa: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Actualizar Punteo de la Rúbrica
+        function updateScore() {
+            const selects = document.querySelectorAll('.rubric-score');
+            let total = 0;
+            selects.forEach(select => {
+                total += parseInt(select.value);
+            });
+            document.getElementById('total-score').innerText = total + " / 12 pts";
+        }
+
+        // TRIVIA INTERACTIVA DE HECHO VS OPINIÓN
+        const triviaData = [
+            {
+                q: "'El helado de chocolate es el más delicioso del mundo.' ¿Qué tipo de enunciado es?",
+                options: [
+                    "Un Hecho comprobable",
+                    "Una Opinión personal",
+                    "Una orden directa",
+                    "Una pregunta"
+                ],
+                correct: 1
+            },
+            {
+                q: "'El agua hierve a 100 grados centígrados al nivel del mar.' ¿Qué tipo de enunciado es?",
+                options: [
+                    "Una Opinión personal",
+                    "Un Hecho objetivo",
+                    "Un conector de duda",
+                    "Un poema"
+                ],
+                correct: 1
+            },
+            {
+                q: "¿Cuál de las siguientes frases inicia correctamente una OPINIÓN?",
+                options: [
+                    "Según el diccionario...",
+                    "La fecha exacta es...",
+                    "Desde mi punto de vista...",
+                    "El número total es..."
+                ],
+                correct: 2
+            },
+            {
+                q: "Si alguien tiene una opinión diferente a la tuya, la acción correcta según el hábito Montano es:",
+                options: [
+                    "Enojarse e interrumpir",
+                    "Escuchar con respeto para entender su punto",
+                    "Ignorar su opinión",
+                    "Decirle que está equivocado de inmediato"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+
+        function loadTrivia() {
+            const q = triviaData[currentQuestion];
+            document.getElementById('trivia-question').innerText = q.q;
+            const optionsDiv = document.getElementById('trivia-options');
+            optionsDiv.innerHTML = '';
+            document.getElementById('trivia-feedback').innerText = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "bg-white hover:bg-montanoAzul hover:text-white border border-montanoAzul text-montanoAzul font-medium py-2 px-3 rounded-lg text-xs md:text-sm transition shadow-sm";
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(idx);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIdx) {
+            const q = triviaData[currentQuestion];
+            const feedback = document.getElementById('trivia-feedback');
+            if (selectedIdx === q.correct) {
+                feedback.className = "font-bold text-sm text-green-600";
+                feedback.innerText = "¡Correcto! Has identificado adecuadamente el enunciado.";
+            } else {
+                feedback.className = "font-bold text-sm text-red-500";
+                feedback.innerText = "¡Inténtalo de nuevo! Recuerda distinguir lo objetivo de lo subjetivo.";
+            }
+
+            setTimeout(() => {
+                currentQuestion = (currentQuestion + 1) % triviaData.length;
+                loadTrivia();
+            }, 2000);
+        }
+
+        // Inicialización al cargar la página
+        window.onload = function() {
+            loadTrivia();
+            updateScore();
+        };
+    </script>
+</body>
+</html>
